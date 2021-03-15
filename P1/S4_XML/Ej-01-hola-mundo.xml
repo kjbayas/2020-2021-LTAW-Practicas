@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Estructura de mi tienda -->
+<!-- Nodo raiz -->
+<tienda>
+
+  <!-- Mi tienda contiene productos/articulos -->
+  <producto>
+    Un producto
+  </producto>
+
+  <producto>
+    Otro producto
+  </producto>
+
+  <hola></hola>
+
+</tienda>
