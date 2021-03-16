@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE tienda [
+    <!ELEMENT tienda (producto*)>
+    <!-- El elemento descripcion es opcional-->
+    <!ELEMENT producto (nombre, descripcion?, stock)>
+    <!ELEMENT nombre (#PCDATA)>
+    <!ELEMENT descripcion (#PCDATA)>
+    <!ELEMENT stock (#PCDATA)>          
+]>
+<tienda>
+    <producto>
+        <nombre>Alhambre II</nombre>
+        <descripcion>Placa co FPGA ice40HX8K</descripcion>
+        <stock>3</stock>
+    </producto>
+    <producto>
+        <nombre>Icestick</nombre>
+        <stock>10</stock>
+    </producto>
+</tienda>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<tienda xmlns="https://github.com/eclipse/lemminx"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        https://github.com/eclipse/lemminx 01-xs-simple.xsd">
+    Esta es mi tienda
+</tienda>
