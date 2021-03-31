@@ -4,37 +4,14 @@ body{
     font-family: 'Syne Mono', cursive;
 }
 
-button{
-    font-size: 16px;
-    text-align: center;
-    border-radius: 8px;
-    padding: 10px 24px;
-}
-
-.button-checkout{
-    border: none;
-    background-color: white;
-    color: black;
-    border: 2px solid rgba(69, 228, 161, 0.726);
-    position: absolute;
-    right: 15px;
-    bottom: 10px;
-    transition-duration: 0.4s;
-}
-
-.button-checkout:hover{
-    background-color: rgba(95, 209, 156, 0.76);
-    color: white;
-}
 
 .page-nav{
     background-color: aquamarine;
     border: 1px solid black;
     position: relative;
+    display: flex;
 }
-.page-nav h1{
-     margin: 20px;
-}
+
 .page-content{
     display: flex;
     flex-wrap: wrap;
@@ -55,20 +32,8 @@ button{
 .product-container img{
     width: 300px;
     height: 200px;
+    padding-top: 29px;
 }
 
-.button-add{
-    border: none;
-    background-color: white;
-    color: black;
-    border: 2px solid greenyellow;
-    position: absolute;
-    right: 15px;
-    bottom: 10px;
-    transition-duration: 0.4s;
-}
 
-.button-add:hover{
-    background-color: rgba(141, 209, 95, 0.76);
-    color: white;
-}
+
