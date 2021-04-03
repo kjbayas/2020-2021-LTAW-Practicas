@@ -1,40 +1,37 @@
 body{
     margin: 10px;
-    background-color: aliceblue;
+    background-color: rgba(247, 247, 247, 0.63);
     font-family: 'Syne Mono', cursive;
 }
 
 button{
-    font-size: 16px;
+    font-size: 20px;
     text-align: center;
     border-radius: 8px;
     padding: 10px 24px;
 }
 
-.button-checkout{
-    border: none;
-    background-color: white;
-    color: black;
-    border: 2px solid rgba(69, 228, 161, 0.726);
-    position: absolute;
-    right: 15px;
-    bottom: 10px;
-    transition-duration: 0.4s;
-}
-
-.button-checkout:hover{
-    background-color: rgba(95, 209, 156, 0.76);
-    color: white;
-}
-
 .page-nav{
-    background-color: aquamarine;
-    border: 1px solid black;
+    background-color: rgba(214, 197, 161, 0.384);
+    border: 1px solid rgba(201, 79, 79, 0.425);
     position: relative;
 }
 .page-nav h1{
      margin: 20px;
+     text-align: center;
+     color: rgb(122, 76, 16);
+     font-size: 50px;
 }
+
+.mando li{
+    margin-left: 20px;
+    margin-top: 10px;
+	list-style: none;
+    padding-right: 20px;
+    display: inline-block;
+    font-style: italic;
+}
+
 .page-content{
     display: flex;
     flex-wrap: wrap;
@@ -46,10 +43,16 @@ button{
     margin: 15px;
     padding: 2px 16px;
     position: relative;
+    color: rgb(51, 49, 40);
+}
+.product-container h3{
+    text-align: center;
+    color: rgb(77, 58, 7);
+    font-size: 20px;
 }
 
 .product-container:hover{
-    box-shadow: 0 8px 16px 0 rgb(0, 0, 0, 0.2);    
+    box-shadow: 0 8px 16px 0 rgba(230, 65, 65, 0.863);    
 }
 
 .product-container img{
@@ -61,7 +64,7 @@ button{
     border: none;
     background-color: white;
     color: black;
-    border: 2px solid greenyellow;
+    border: 2px solid rgba(100, 71, 37, 0.89);
     position: absolute;
     right: 15px;
     bottom: 10px;
@@ -69,15 +72,6 @@ button{
 }
 
 .button-add:hover{
-    background-color: rgba(141, 209, 95, 0.76);
+    background-color: rgba(238, 110, 36, 0.486);
     color: white;
-}
-footer{
-	text-align: center;
-	font-size: 150%;
-	bottom: 0;
-	width: 100%;
-	height: 40px;
-	padding-top: 10px;
-	padding-bottom: 80px;
 }

@@ -5,10 +5,8 @@ html {
 }
 
 body{
-    background-color: rgba(37, 223, 68, 0.322);
-    background-size: cover;
-    margin: 0;
-	margin-bottom: 500px;
+    background-color:white;
+
 }
 
 #main{
@@ -26,13 +24,12 @@ body{
 	padding-top: 40px;
     text-align: center;
 	font-size: 200%;
-	color: rgba(65, 66, 62, 0.349);
+	color: rgba(204, 121, 172, 0.349);
 }
 
 .error h3{
     text-align: center;
-	font-size: 75%;
-	color: rgb(78, 126, 88);
+	color: rgb(126, 78, 112);
 }
 
 
