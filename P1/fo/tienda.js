@@ -28,14 +28,13 @@ const server = http.createServer((req, res) => {
     console.log("Tipo de Fichero: " + fich_type);
 
     fs.readFile(fich, function(err, data){
-
         var mime = "text/html"
 
         if (fich_type == "css"){
             mime = "text/css";
         }
         
-        if(fich_type == 'jpg' || fich_type == 'png'|| fich_type == 'jpeg'){
+        if (fich_type == 'jpg' || fich_type == 'png'|| fich_type == 'jpeg'){
             mime ="image/"+ fich_type;
         }
 
