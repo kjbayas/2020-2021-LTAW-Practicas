@@ -1,55 +1,53 @@
+//--Servidor de mi tienda de comida
 const http = require('http');
-const fs = require('fs');
 const url = require('url');
-
+const fs = require('fs');
 const PUERTO = 9000
 
-const server = http.createServer((req, res) => {
-    
-    //-- Indicamos que se ha recibido una petición
-    console.log("Petición recibida!");
+//-- Configurar y lanzar el servidor. Por cada peticion recibida
+//-- se imprime un mensaje en la consola
+http.createServer((req, res) => {
+  console.log("------- Peticion recibida -------")
+  let q = url.parse(req.url, true);
+  console.log("Recurso:" + q.pathname)
 
-    var myURL = url.parse(req.url, true);
-    console.log("Recurso solicitado (URL): " + req.url);
-    console.log("Recurso: " + myURL.pathname);
+  let filename = ""
+  //--tipos mime que nos podemos encontrar
+  const mime = {
+   'html' : 'text/html',
+   'css'  : 'text/css',
+   'jpg'  : 'image/jpg',
+   'png'  : 'image/png',
+   'ico'  : 'image/x-icon'
+  };
+  //-- Obtener la ruta del fichero
+  if (q.pathname == "/") {
+    filename += "/tienda.html"
+  } else {
+    filename += q.pathname
+  }
 
-    var fich = "";
-
-    if(myURL.pathname == '/'){
-        fich += "/tienda.html"; //-- Página principal de la tienda
-    }else{
-        fich += myURL.pathname; //-- Otro recurso.
+  //--nos quedamos con el fichero a devolver
+  let str = filename.substr(1)
+  //-- Leer fichero
+  fs.readFile(str, function(err, data) {
+    //-- Tipo mime
+    let mimeType =  mime[str.split(".")[1]];
+    //-- Comprobación de errores
+    if (err == null) {
+      //-- Generar el mensaje de respuesta
+      res.writeHead(200, {'Content-Type': mimeType});
+    } else {
+      //--En el caso de fichero no encontrado, mensaje de error
+      res.writeHead(404, {'Content-Type': mimeType});
+      return res.end("404 Not Found");
     }
-    console.log("Fichero a devolver: " + fich);
+    //--Se envia los datos del fichero que se pide
+    res.write(data);
+    res.end();
+  });
 
-    fich_type = fich.split(".")[1]; //-- Extension del archivo.
-    fich = "." + fich; //-- Leer el archivo.
-    console.log("Nombre del Fichero: " + fich);
-    console.log("Tipo de Fichero: " + fich_type);
+}).listen(PUERTO);
 
-    fs.readFile(fich, function(err, data){
-        var mime = "text/html"
-
-        if (fich_type == "css"){
-            mime = "text/css";
-        }
-        
-        if (fich_type == 'jpg' || fich_type == 'png'|| fich_type == 'jpeg'){
-            mime ="image/"+ fich_type;
-        }
-
-        if ((err) || fich == "./error.html"){
-            res.writeHead(404,{'Content-Type': mime})
-            console.log("Respuesta: 404 Not Found")
-        }else{
-            res.writeHead(200, {'Content-Type': mime});
-            console.log("Respuesta: 200 OK")
-        }
-        res.write(data);
-        res.end();
-    });
-});
-
-server.listen(PUERTO);
-
-console.log("Servidor Activado!. Escuchando en el puerto " + PUERTO);
+console.log("Servidor Activado........")
+console.log("Escuchando en el puerto: " + PUERTO)
