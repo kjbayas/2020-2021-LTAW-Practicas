@@ -5,7 +5,9 @@ const url = require('url');
 const PUERTO = 9000
 
 const server = http.createServer((req, res) => {
-    console.log("----Petición recibida----");
+    
+    //-- Indicamos que se ha recibido una petición
+    console.log("Petición recibida!");
 
     var myURL = url.parse(req.url, true);
     console.log("Recurso solicitado (URL): " + req.url);
@@ -29,12 +31,12 @@ const server = http.createServer((req, res) => {
 
         var mime = "text/html"
 
-        if(fich_type == 'jpg' || fich_type == 'png'|| fich_type == 'jpeg'|| fich_type == 'ico'){
-            mime ="image/"+ fich_type;
-        }
-
         if (fich_type == "css"){
             mime = "text/css";
+        }
+        
+        if(fich_type == 'jpg' || fich_type == 'png'|| fich_type == 'jpeg'){
+            mime ="image/"+ fich_type;
         }
 
         if ((err) || fich == "./error.html"){
