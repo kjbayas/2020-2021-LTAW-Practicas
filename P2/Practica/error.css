@@ -1,0 +1,35 @@
+
+html {
+	min-height: 100%;
+	position: relative;
+}
+
+body{
+    background-color:white;
+
+}
+
+#main{
+	width: 1349px;
+}
+
+.error{
+    text-align: center;
+	font-size: 150%;
+	bottom: 0;
+    display: inherit;
+}
+
+.error h1{
+	padding-top: 40px;
+    text-align: center;
+	font-size: 200%;
+	color: rgba(204, 121, 172, 0.349);
+}
+
+.error h3{
+    text-align: center;
+	color: rgb(126, 78, 112);
+}
+
+

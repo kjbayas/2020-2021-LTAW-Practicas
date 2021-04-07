@@ -1,0 +1,78 @@
+body{
+    margin: 10px;
+    background-color: rgba(241, 252, 249, 0.404);
+    font-family: 'Syne Mono', cursive;
+}
+
+button{
+    font-size: 20px;
+    text-align: center;
+    border-radius: 8px;
+    padding: 10px 24px;
+}
+
+.page-nav{
+    background-color: rgba(65, 91, 112, 0.384);
+    border: 1px solid rgba(39, 228, 118, 0.425);
+    position: relative;
+}
+.page-nav h1{
+     margin: 20px;
+     text-align: center;
+     color: rgb(44, 16, 122);
+     font-size: 50px;
+}
+
+.mando li{
+    margin-left: 20px;
+    margin-top: 10px;
+	list-style: none;
+    padding-right: 20px;
+    display: inline-block;
+    font-style: italic;
+}
+
+.page-content{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    border: 1px solid rgb(95, 209, 209);
+}
+
+.product-container{
+    margin: 15px;
+    padding: 2px 16px;
+    position: relative;
+    color: rgb(55, 57, 82);
+}
+.product-container h3{
+    text-align: center;
+    color: rgb(77, 58, 7);
+    font-size: 20px;
+}
+
+.product-container:hover{
+    box-shadow: 0 8px 16px 0 rgba(10, 138, 117, 0.863);    
+}
+
+.product-container img{
+    width: 300px;
+    height: 200px;
+}
+
+.button-add{
+    border: none;
+    background-color: white;
+    color: rgb(49, 142, 165);
+    border: 2px solid rgba(37, 98, 100, 0.89);
+    position: absolute;
+    right: 15px;
+    bottom: 10px;
+    transition-duration: 0.4s;
+    font-family: monospace;
+}
+
+.button-add:hover{
+    background-color: rgba(36, 140, 238, 0.384);
+    color: white;
+}
