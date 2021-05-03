@@ -2,54 +2,39 @@
 <html  lang = " es " dir = " ltr " >
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+            integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
         <title>Tienda Online de Karol</title>
         <link rel="stylesheet" href="tienda.css">
         <link rel="icon" href="favicon.ico">
     </head>
-    <body>
-        <div class="page-nav">
-            <div class="mando">
-                <li><a href="tienda.html">Inicio</a></li>
-                <li><a href="#">Acerca de</a></li>
-                <li><a href="#">Contacto</a></li>
-                <li><a href="error.html">Cesta</a></li>
-            </div>
-            <div class="nombre">
-                <img src="logo.jpg">
-                <h3>La comida se disfruta sin contar calorias</h3>
-            </div>            
-        </div>
-        <div class="page-content">
-            <div class="product-container">
-                <img src="tacos/tacos.jpg">
-                <a href="tacos.html"><h3>Tacos</h3></a>
-            </div>
-
-            <div class="product-container">
-                <img src="burger/burger1.jpg">
-                <a href="burguers.html"><h3>Burger</h3></a>
-            </div>
-
-            <div class="product-container">
-                <img src="pizza/Pizza-VEGANA.png">
-                <a href="pizzas.html"><h3>Pizza</h3></a>
-            </div>
-
-            <div class="product-container">
-                <img src="bowls/diavegano-age-m.jpg">
-                <a href="bowl.html"><h3>Bowls</h3></a>
-            </div>
-
-            <div class="product-container">
-                <img src="otros/cursos-de-comida-vegetariana-.jpg">
-                <a href="otro.html"><h3>Otros</h3></a>
-            </div>
-
-            <div class="product-container">
-                <img src="postres/postre1.jpg">
-                <a href="postre.html"><h3>Desserts</h3></a>
-            </div>
-
+    <body class="flex">
+        <!--  -->
+        <div class="container">
+            <img src="logo.jpg" alt="" class="fondo">
+            <span class="boton"><a href="registro.html">REGISTRAR</a></span>
+            <nav class="menu">
+                <ul class="flex">
+                    <li><a style="color: aliceblue;" href="tienda.html">HOME</a></li>
+                    <li>BUSCAR</li>
+                    <li>SHOP</li>
+                    <li class="logo">YOUR LOGO</li>
+                </ul>
+            </nav>
+    
+            <div class="box-info">
+                <h1>WELCOME TO</h1>
+                <h2>KAROL`S FOOD</h2>
+                <div class="parrafo">
+                    <p>La comida se disfruta sin contar calorias</p>
+                </div>
+                <div class="redes-sociales">
+                    <li class="fab fa-facebook flex"></li>
+                    <li class="fab fa-twitter flex"></li>
+                    <li class="fab fa-youtube flex"></li>
+                </div>
+            </div>    
         </div>
     </body>
 </html>
