@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>CHAT</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="client.js" defer></script>
+    <link rel="stylesheet" href="estilo.css">
+    <link href="https://fonts.googleapis.com/css2?family=Gabriela&display=swap" rel="stylesheet">
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="chat-header">
+        <h1>Chat</h1>
+      </div>
+
+      <div class="chat">
+        <p id="display"></p>
+      </div>
+
+      <div class="write">
+        <input id="message" autocomplete="off" placeholder="Type your message" />
+        <br>
+        <button type="button" id="send">SEND</button>
+      </div>
+    </div>
+  </body>
+</html>
