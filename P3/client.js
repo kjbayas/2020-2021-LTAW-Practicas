@@ -1,10 +1,20 @@
-//DOM
-const display = document.getElementById("display");
-const message = document.getElementById("message");
-const send = document.getElementById("send");
+// DOM
+
+let display = document.getElementById("display");
+let message = document.getElementById("message");
+let username = document.getElementById("username");
+let btn = document.getElementById('send');
+let send = document.getElementById("send");
 
 //-- Crear un websocket, estableciendo conexión con el servidor
 const socket = io();
+
+btn.addEventListener('click', function(){
+  socket.emit('chat:message', {
+      message:message.value,
+      username:username.value
+  });
+});
 
 socket.on('hello', (message) => {
   console.log("Mensaje del servidor: " + message);

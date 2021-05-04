@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>CHAT</title>
+    <title>Mi CHAT</title>
     <script src="/socket.io/socket.io.js"></script>
     <script src="client.js" defer></script>
     <link rel="stylesheet" href="estilo.css">
@@ -20,6 +20,7 @@
       </div>
 
       <div class="write">
+        <input id="username" autocomplete="off" placeholder="Nickname" />
         <input id="message" autocomplete="off" placeholder="Type your message" />
         <br>
         <button type="button" id="send">SEND</button>

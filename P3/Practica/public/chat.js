@@ -29,3 +29,16 @@ socket.on('chat:message', function(data) {
 socket.on('chat:typing', function(data){
     actions.innerHTML=`<p><em>${data} esta escribiendo</em></p>`
 });
+
+send.onclick = () => {
+    if (message.value) {
+      let initial = message.value.charAt(0)
+      console.log(initial)
+      if (initial == "/") {
+        socket.emit('cmd', message.value)
+      } else {
+        socket.emit('message', message.value)
+      }
+      message.value="";
+    }
+  }
