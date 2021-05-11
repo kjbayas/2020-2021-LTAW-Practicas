@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
-const PORT = 8000
+const PORT = 9000
 
 var users = 0;
 
@@ -26,51 +26,54 @@ io.on('connection', function(socket){
   console.log('--> Usuario conectado . Socket id: ' + socket.id);
   users = users + 1;
 
-  socket.emit('hello', "Bienvenido al Chat, eres el usuario " + users);
-  socket.broadcast.emit('cmd', 'Nuevo usuario se ha unido a la conversación');
-
-  //-- Función de retrollamada de mensaje recibido del cliente
-  socket.on('message', (message) => {
-    console.log("Cliente: " + socket.id + ': ' + message);
-    //-- Enviar el mensaje a TODOS los clientes que estén conectados
-    io.emit('message', message);
-  })
-
-  socket.on('cmd', (message) => {
-    console.log("Cliente: " + socket.id + ': ' + message);
-    switch(message) {
-      case "/help":
-        message = "Comandos: /help, /list, /hello, /date";
-      break;
-
-      case "/list":
-        message = "Hay " + users + " usuarios en el chat";
-      break;
-
-      case "/hello":
-        message = "Hola estas en el chat de Karol";
-      break;
-
-      case "/date":
-        let date = new Date();
-        let day = date.getDate();
-        let month = date.getMonth() + 1;
-        let year = date.getFullYear();
-
-        message = "El día de hoy es: " + day + "/" + month + "/" + year;
-      break;
-
-      default:
-        message = "Este comando no se ha podido encontrar"
+  //socket.emit('hello', "Bienvenido al Chat, eres el usuario " + users);
+  //socket.broadcast.emit('commands', 'Nuevo usuario se ha unido a la conversación');
+  socket.on('typing',(data)=>{
+    socket.broadcast.emit('typing',data);
+  });
+  //-- Mensaje recibido: Reenviarlo a todos los clientes conectados
+  socket.on("message", (msg)=> {
+    console.log(msg.username + ": " + msg.message);
+    if (msg.message[0] == "/") {
+        switch (msg.message) {
+            case "/help":
+              msg.message = "/list, /hello, /date";
+              io.emit("commands", msg);
+              break;
+            case "/list":
+              msg.message = "Hay " + users + " usuarios en el chat";
+              io.emit("commands", msg);
+              break;
+            case "/hello":
+              msg.message = "Hola estas en el chat de Karol";
+              io.emit("commands", msg);
+              break;
+            case "/date":
+              let date = new Date();
+              let day = date.getDate();
+              let month = date.getMonth() + 1;
+              let year = date.getFullYear();
+              msg.message = "El día de hoy es: " + day + "/" + month + "/" + year;
+              io.emit("commands", msg);
+              break;           
+            default:
+              io.sockets.emit("message", msg);
+        }
+    }else{
+        //-- Reenviarlo a todos los clientes conectados
+        //socket.broadcast.emit("message", msg);
+        io.sockets.emit("message", msg);
     }
-    //-- Enviamos el mensaje solo al que nos envia la peticion 
-    io.to(socket.id).emit('cmd', message);
-  })
+  });
+
+  socket.on("escritura", (msg)=> {
+    socket.broadcast.emit("escritura", msg);
+  });
 
   //-- Usuario desconectado. Imprimir el identificador de su socket
   socket.on('disconnect', function(){
     users = users - 1;
     console.log('Este Usuario se ha desconectado --> Socket id: ' + socket.id);
-    socket.broadcast.emit('cmd', 'Un usuario ha abandonado la conversación');
+    socket.broadcast.emit('commands', 'Un usuario ha abandonado la conversación');
   });
 });

@@ -3,43 +3,45 @@
 let display = document.getElementById("display");
 let message = document.getElementById("message");
 let username = document.getElementById("username");
-let btn = document.getElementById('send');
-let send = document.getElementById("send");
+
 
 //-- Crear un websocket, estableciendo conexión con el servidor
 const socket = io();
-
-btn.addEventListener('click', function(){
-  socket.emit('chat:message', {
-      message:message.value,
-      username:username.value
-  });
+//-- Al escribir se envía un mensaje al servidor
+message.addEventListener('keypress', function(){
+  socket.emit("typing", username.value);
+});
+socket.on("message", (msg)=>{
+  display.innerHTML += '<p style="color:black">' + msg.username + ": " + msg.message + '</p>';
+  actions.innerHTML = "";
 });
 
-socket.on('hello', (message) => {
-  console.log("Mensaje del servidor: " + message);
-  display.innerHTML = "<ul class='server'>" + message + "</ul>";
+socket.on('typing', function(data){
+  actions.innerHTML=`<p><em>${data} esta escribiendo....</em></p>`
 });
 
-socket.on('cmd', (message) => {
-  console.log("Mensaje del servidor: " + message);
-  display.innerHTML += "<ul class='server'>" + message + "</ul>";
-});
-
-socket.on('message', (message) => {
-  console.log(message)
-  display.innerHTML += "<ul class='message'>" + message + "</ul>";
-});
-
-send.onclick = () => {
-  if (message.value) {
-    let initial = message.value.charAt(0)
-    console.log(initial)
-    if (initial == "/") {
-      socket.emit('cmd', message.value)
-    } else {
-      socket.emit('message', message.value)
-    }
-    message.value="";
+socket.on("commands", (msg)=>{
+  if (msg.username == username.value) {
+    msg.username = "servidor";
+    display.innerHTML += '<p style="color:blue">' + msg.username + ": " + msg.message + '</p>';
   }
+  actions.innerHTML = ""; 
+});
+//-- Al apretar el botón se envía un mensaje al servidor
+message.onchange = () => {
+  if (message.value){
+    if (username.value == ""){
+      socket.emit("message", {
+        message : "Te falta un nick",
+        username : "Servidor"
+      });
+    }else{
+      socket.emit("message", {
+        message : message.value,
+        username : username.value
+      });
+    }
+  }
+  //-- Borrar el mensaje actual
+  message.value = "";
 }
