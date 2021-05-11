@@ -3,6 +3,7 @@
 let display = document.getElementById("display");
 let message = document.getElementById("message");
 let username = document.getElementById("username");
+let actions = document.getElementById('actions');
 
 
 //-- Crear un websocket, estableciendo conexión con el servidor
@@ -16,8 +17,8 @@ socket.on("message", (msg)=>{
   actions.innerHTML = "";
 });
 
-socket.on('typing', function(data){
-  actions.innerHTML=`<p><em>${data} esta escribiendo....</em></p>`
+socket.on('typing', function(msg){
+  actions.innerHTML=`<p><em>${msg} esta escribiendo....</em></p>`
 });
 
 socket.on("commands", (msg)=>{

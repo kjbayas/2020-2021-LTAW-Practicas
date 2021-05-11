@@ -28,8 +28,8 @@ io.on('connection', function(socket){
 
   //socket.emit('hello', "Bienvenido al Chat, eres el usuario " + users);
   //socket.broadcast.emit('commands', 'Nuevo usuario se ha unido a la conversación');
-  socket.on('typing',(data)=>{
-    socket.broadcast.emit('typing',data);
+  socket.on('typing',(msg)=>{
+    socket.broadcast.emit('typing',msg);
   });
   //-- Mensaje recibido: Reenviarlo a todos los clientes conectados
   socket.on("message", (msg)=> {
@@ -60,8 +60,6 @@ io.on('connection', function(socket){
               io.sockets.emit("message", msg);
         }
     }else{
-        //-- Reenviarlo a todos los clientes conectados
-        //socket.broadcast.emit("message", msg);
         io.sockets.emit("message", msg);
     }
   });
