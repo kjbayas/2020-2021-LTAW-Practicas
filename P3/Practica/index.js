@@ -2,7 +2,7 @@ const path = require('path');
 const express = require('express');
 const app = express();
 
-app.set('port', process.env.Port || 8080);
+app.set('port', process.env.Port || 8000);
 
 //-- Archivos estaticos 
 console.log();
@@ -26,6 +26,20 @@ io.on('connection',(socket)=>{
 
     socket.on('chat:typing',(data)=>{
         socket.broadcast.emit('chat:typing',data);
+    });
+
+    socket.on('chat:message', (data)=>{
+        switch(data) {
+            case "/help":
+                data = "Comandos: /help, /list, /hello, /date";
+            break;
+            case "/hello":
+                data = "Hola estas en el chat de Karol";
+            break;
+            default:
+                message = "Este comando no se ha podido encontrar"
+        }
+        io.to(socket.id).emit('chat:message', data);
     })
 
 });

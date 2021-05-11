@@ -12,6 +12,19 @@ btn.addEventListener('click', function(){
         message:message.value,
         username:username.value
     });
+
+    send.onclick = () => {
+      if (message.value) {
+        let initial = message.value.charAt(0)
+        console.log(initial)
+        if (initial == "/") {
+          socket.emit('message', message.value)
+        } else {
+          socket.emit('message', message.value)
+        }
+        message.value="";
+      }
+    }
 });
 
 message.addEventListener('keypress', function(){
@@ -27,18 +40,7 @@ socket.on('chat:message', function(data) {
 }); 
 
 socket.on('chat:typing', function(data){
-    actions.innerHTML=`<p><em>${data} esta escribiendo</em></p>`
+    actions.innerHTML=`<p><em>${data} esta escribiendo....</em></p>`
 });
 
-send.onclick = () => {
-    if (message.value) {
-      let initial = message.value.charAt(0)
-      console.log(initial)
-      if (initial == "/") {
-        socket.emit('cmd', message.value)
-      } else {
-        socket.emit('message', message.value)
-      }
-      message.value="";
-    }
-  }
+
