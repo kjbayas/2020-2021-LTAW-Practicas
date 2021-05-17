@@ -6,7 +6,7 @@ const io = require('socket.io')(http);
 const electron = require('electron');
 const ip = require('ip');
 
-const PORT = 9000
+const PORT = 8080
 
 var users = 0;
 
@@ -117,25 +117,11 @@ electron.app.on('ready', () => {
   //-- Cargar interfaz gráfica en HTML
   win.loadFile("index.html");
 
-  //-- Esperar a que la página se cargue y se muestre
-  //-- y luego enviar el mensaje al proceso de renderizado para que 
-  //-- lo saque por la interfaz gráfica
-  //--win.on('ready-to-show', () => {
-    //--win.webContents.send('print', "MENSAJE ENVIADO DESDE PROCESO MAIN");
-    //-- Mandar dirección IP
-    ip_addr = 'http://' + ip.address() + ':' + PORT;
-    win.webContents.send('print-ip', ip_addr);
+  win.on('ready-to-show', () => {
+    win.webContents.send('print', users);
   });
 
-  //-- Enviar un mensaje al proceso de renderizado para que lo saque
-  //-- por la interfaz gráfica
-  //--win.webContents.send('print', "MENSAJE ENVIADO DESDE PROCESO MAIN");
-  //-- Esperar a recibir los mensajes de botón apretado (Test) del proceso de 
-//-- renderizado. Al recibirlos se manda un mensaje a los clientes
-electron.ipcMain.handle('test', (event, msg) => {
-    console.log("-> Mensaje: " + msg);
-    //-- Enviar mensaje de prueba a todos los clientes
-    io.send(msg);
+  win.webContents.send('print', users);
 
 });
 
@@ -143,5 +129,10 @@ electron.ipcMain.handle('test', (event, msg) => {
 //-- Esperar a recibir los mensajes de botón apretado (Test) del proceso de 
 //-- renderizado. Al recibirlos se escribe una cadena en la consola
 electron.ipcMain.handle('test', (event, msg) => {
-  console.log("-> Mensaje: " + msg);
+  
+  var msg = {};
+  msg.username = "Karol-ADMI";
+  msg.message = "Este es un mensaje de prueba desde el admi Karol!";
+  io.sockets.emit("message", msg);
+  console.log("-> Mensaje: " + msg.message);
 });

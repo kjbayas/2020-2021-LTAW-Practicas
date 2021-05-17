@@ -4,7 +4,10 @@
     "version": "0.1.0",
     "main": "index.js",
     "scripts": {
-        "start": "electron ."
+        "start": "electron .",
+        "pack": "electron-builder --dir",
+        "dist": "electron-builder",
+        "postinstall": "electron-builder install-app-deps"
     },
     "dependencies": {
         "colors": "^1.4.0",
@@ -13,7 +16,8 @@
         "ip": "^1.1.5",
         "qrcode": "^1.4.4",
         "socket.io": "^4.1.1",
-        "websocket": "^1.0.34"
+        "websocket": "^1.0.34",
+        "wscat": "^4.0.1"
     },
     "devDependencies": {
         "electron-builder": "^22.10.5"
