@@ -1,40 +1,33 @@
 <!DOCTYPE html>
-<html  lang = " es " dir = " ltr " >
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-            integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-        <title>Tienda Online de Karol</title>
-        <link rel="stylesheet" href="tienda.css">
-        <link rel="icon" href="favicon.ico">
-    </head>
-    <body class="flex">
-        <!--  -->
-        <div class="container">
-            <img src="logo.jpg" alt="" class="fondo">
-            <span class="boton"><a href="registro.html">REGISTRAR</a></span>
-            <nav class="menu">
-                <ul class="flex">
-                    <li><a style="color: aliceblue;" href="tienda.html">HOME</a></li>
-                    <li>BUSCAR</li>
-                    <li>SHOP</li>
-                    <li class="logo">YOUR LOGO</li>
-                </ul>
-            </nav>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="cliente.js" defer></script>
+    <title>tienda de karol</title>
+</head>
+<body>
+
+    <h1>Búsquedas</h1>
+    <p>Introduce producto a buscar</p>
+    <form action="/buscar">
+        <input type="text" placeholder="Buscar" id="caja">
+        <p id="display1"></p>
+    </form>
+
+    <form action="/producto1" method="get">
+          <input type="submit" value="Top"/>
+    </form>
+    <form action="/producto2" method="get">
+        <input type="submit" value="Pantalones Cortos"/>
+    </form>
+    <form action="/producto3" method="get">
+        <input type="submit" value="Conjunto"/>
+    </form>
+    <form action="/producto4" method="get">
+        <input type="submit" value="ligas de resistencia"/>
+    </form>
     
-            <div class="box-info">
-                <h1>WELCOME TO</h1>
-                <h2>KAROL`S FOOD</h2>
-                <div class="parrafo">
-                    <p>La comida se disfruta sin contar calorias</p>
-                </div>
-                <div class="redes-sociales">
-                    <li class="fab fa-facebook flex"></li>
-                    <li class="fab fa-twitter flex"></li>
-                    <li class="fab fa-youtube flex"></li>
-                </div>
-            </div>    
-        </div>
-    </body>
+</body>
 </html>
