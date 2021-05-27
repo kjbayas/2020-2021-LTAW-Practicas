@@ -1,0 +1,98 @@
+[
+    {
+        "productos": [
+            {
+                "nombre": "Top Deportivo",
+                "descripcion": "Top para mujer, ajustable.",
+                "stock": 20,
+                "precio": 15
+            },
+            {
+                "nombre": "Pantalon Corto",
+                "descripcion": "Pantalones deportivos, para verano",
+                "stock": 7,
+                "precio": 20
+            },
+            {
+                "nombre": "Conjunto",
+                "descripcion": " top y leggins deportivos.",
+                "stock": 5,
+                "precio": 40
+            },
+            {
+                "nombre": "Ligas de resistencia",
+                "descripcion": "Ligas para gluteos",
+                "stock": 20,
+                "precio": 40
+            }
+        ]
+    },
+    {
+        "usuarios": [
+            {
+                "user": "karolbayas",
+                "nombre": "kjbayas",
+                "email": "kj.bayas.@gmail.com"
+            },
+            {
+                "user": "root",
+                "nombre": "rooot",
+                "email": "rooot@root.com"
+            }
+        ]
+    },
+    {
+        "pedidos": [
+            {
+                "user": "kjbayas",
+                "dirección": "Copenhague 21",
+                "tarjeta": 1010,
+                "productos": [
+                    "Conjunto x 1",
+                    "",
+                    "Ligas de resistencia x 1",
+                    ""
+                ]
+            },
+            {
+                "user": "root",
+                "dirección": "Copenhague 21",
+                "tarjeta": "1010",
+                "productos": [
+                    {
+                        "producto": "conjunto"
+                    },
+                    {
+                        "producto": "ligas de resisitencia"
+                    }
+                ]
+            },
+            {
+                "user": "root",
+                "dirección": "aaaa",
+                "tarjeta": "11111",
+                "productos": [
+                    {
+                        "producto": "conjunto"
+                    },
+                    {
+                        "producto": "ligas de resisitencia"
+                    }
+                ]
+            },
+            {
+                "user": "root",
+                "dirección": "Copenhague 21",
+                "tarjeta": "11111",
+                "productos": [
+                    {
+                        "producto": "conjunto"
+                    },
+                    {
+                        "producto": "ligas de resisitencia"
+                    }
+                ]
+            }
+        ]
+    }
+]
