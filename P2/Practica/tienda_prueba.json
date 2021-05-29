@@ -56,41 +56,35 @@
             },
             {
                 "user": "root",
-                "dirección": "Copenhague 21",
-                "tarjeta": "1010",
+                "dirección": "1111111111",
+                "tarjeta": "777777",
                 "productos": [
-                    {
-                        "producto": "conjunto"
-                    },
-                    {
-                        "producto": "ligas de resisitencia"
-                    }
+                    "",
+                    "",
+                    "Conjuntox1",
+                    ""
+                ]
+            },
+            {
+                "user": "karolbayas",
+                "dirección": "copen",
+                "tarjeta": "1111111111111111",
+                "productos": [
+                    "Top Deportivox1",
+                    "",
+                    "",
+                    ""
                 ]
             },
             {
                 "user": "root",
-                "dirección": "aaaa",
-                "tarjeta": "11111",
+                "dirección": "",
+                "tarjeta": "",
                 "productos": [
-                    {
-                        "producto": "conjunto"
-                    },
-                    {
-                        "producto": "ligas de resisitencia"
-                    }
-                ]
-            },
-            {
-                "user": "root",
-                "dirección": "Copenhague 21",
-                "tarjeta": "11111",
-                "productos": [
-                    {
-                        "producto": "conjunto"
-                    },
-                    {
-                        "producto": "ligas de resisitencia"
-                    }
+                    "Top Deportivox1",
+                    "",
+                    "Conjuntox1",
+                    ""
                 ]
             }
         ]
