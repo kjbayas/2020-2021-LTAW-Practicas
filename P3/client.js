@@ -1,10 +1,8 @@
 // DOM
-
 let display = document.getElementById("display");
 let message = document.getElementById("message");
 let username = document.getElementById("username");
 let actions = document.getElementById('actions');
-
 
 //-- Crear un websocket, estableciendo conexión con el servidor
 const socket = io();
