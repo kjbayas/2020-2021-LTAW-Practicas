@@ -25,9 +25,8 @@ app.use('/', express.static(__dirname +'/'));
 io.on('connection', function(socket){
   console.log('--> Usuario conectado . Socket id: ' + socket.id);
   users = users + 1;
-
-  //socket.emit('hello', "Bienvenido al Chat, eres el usuario " + users);
-  //socket.broadcast.emit('commands', 'Nuevo usuario se ha unido a la conversación');
+  socket.emit('hello', "Bienvenido al Chat, eres el usuario " + users);
+  socket.broadcast.emit('bienvenida', 'Nuevo usuario se ha unido a la conversación');
   socket.on('typing',(msg)=>{
     socket.broadcast.emit('typing',msg);
   });
@@ -72,6 +71,6 @@ io.on('connection', function(socket){
   socket.on('disconnect', function(){
     users = users - 1;
     console.log('Este Usuario se ha desconectado --> Socket id: ' + socket.id);
-    socket.broadcast.emit('commands', 'Un usuario ha abandonado la conversación');
+    socket.broadcast.emit('dis', 'Un usuario ha abandonado la conversación');
   });
 });
