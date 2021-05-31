@@ -1,5 +1,7 @@
 const electron = require('electron');
 const ip = require('ip');
+const qrcode = require('qrcode');
+
 
 console.log("Hola desde el proceso de la web...");
 
@@ -12,8 +14,9 @@ const info2 = document.getElementById("info2");
 const info3 = document.getElementById("info3");
 const info4 = document.getElementById("info4");
 const info5 = document.getElementById("info5");
-const numuser = document.getElementById("numuser");
+const numuser = document.getElementById("numusers");
 const IP = document.getElementById("ip");
+const qr = document.getElementById("qr");
 
 //-- Acceder a la API de node para obtener la info
 //-- Sólo es posible si nos han dado permisos desde
@@ -26,12 +29,22 @@ info5.textContent = process.versions.electron;
 IP.textContent = ip.address();
 IP.textContent += ":" + PORT;
 
+const url = 'http://' + ip.address()+ ':'+ PORT;
+qrcode.toDataURL(url, function(err,url){
+    qr.src= url;
+})
+ 
 btn_test.onclick = () => {
-    display.innerHTML += "<p>" + "Karol Admi: Hola!" + "</p>";
+    display.innerHTML += "<p>" + "Karol Admi: Hola Este es un mensaje de prueba !" + "</p>";
     //-- Enviar mensaje al proceso principal
     electron.ipcRenderer.invoke('test', "MENSAJE DE PRUEBA");
 }
 
+//-- Mensaje recibido del proceso MAIN
+electron.ipcRenderer.on('print-ip', (event, message) => {
+    console.log("Recibido: " + message);
+    IP.textContent = message;
+});
 //-- Mensaje recibido del proceso MAIN
 electron.ipcRenderer.on('print', (event, message) => {
     console.log("Recibido: " + message);

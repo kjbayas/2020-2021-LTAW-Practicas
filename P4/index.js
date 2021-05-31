@@ -55,11 +55,12 @@ electron.app.on('ready', () => {
 //-- Cargar interfaz gráfica en HTML
 win.loadFile("index.html");
 
-win.on('ready-to-show', () => {
-  win.webContents.send('print', users);
-});
+
 
 win.webContents.send('print', users);
+
+ip_addr = "http://" + ip.address()+ ":"+ PORT;
+win.webContents.send('print-ip',ip_addr);
 
 });
 
@@ -79,6 +80,7 @@ console.log("-> Mensaje: " + msg.message);
 io.on('connection', function(socket){
   console.log('--> Usuario conectado . Socket id: ' + socket.id);
   users = users + 1;
+  win.webContents.send('print', users);
   socket.emit('hello', "Bienvenido al Chat, eres el usuario " + users);
   socket.broadcast.emit('bienvenida', 'Nuevo usuario se ha unido a la conversación');
   socket.on('typing',(msg)=>{
