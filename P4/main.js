@@ -1,6 +1,6 @@
 const electron = require('electron');
 const ip = require('ip');
-const qrcode = require('qrcode');
+const QRCode = require('qrcode');
 
 
 console.log("Hola desde el proceso de la web...");
@@ -29,10 +29,11 @@ info5.textContent = process.versions.electron;
 IP.textContent = ip.address();
 IP.textContent += ":" + PORT;
 
-const url = 'http://' + ip.address()+ ':'+ PORT;
-qrcode.toDataURL(url, function(err,url){
-    qr.src= url;
-})
+// codigo QR
+//const src = 'http://' + ip.address() + ':' + PORT;
+//QRCode.toDataURL(src, (err, url)=> {
+//    qr.src = url;
+//});
  
 btn_test.onclick = () => {
     display.innerHTML += "<p>" + "Karol Admi: Hola Este es un mensaje de prueba !" + "</p>";

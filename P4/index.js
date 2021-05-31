@@ -33,8 +33,8 @@ electron.app.on('ready', () => {
 
   //-- Crear la ventana principal de nuestra aplicación
   win = new electron.BrowserWindow({
-      width: 600,   //-- Anchura 
-      height: 600,  //-- Altura
+      width: 900,   //-- Anchura 
+      height: 900,  //-- Altura
 
       //-- Permitir que la ventana tenga ACCESO AL SISTEMA
       webPreferences: {
@@ -54,13 +54,14 @@ electron.app.on('ready', () => {
 
 //-- Cargar interfaz gráfica en HTML
 win.loadFile("index.html");
-
-
-
+win.on('ready-to-show', () => {
+  win.webContents.send('print', users);
+});
 win.webContents.send('print', users);
 
-ip_addr = "http://" + ip.address()+ ":"+ PORT;
-win.webContents.send('print-ip',ip_addr);
+//-- Mandar dirección IP
+ip_addr = 'http://' + ip.address() + ':' + PORT;
+win.webContents.send('print-ip', ip_addr);
 
 });
 
@@ -118,6 +119,8 @@ io.on('connection', function(socket){
         io.sockets.emit("message", msg);
     }
     win.webContents.send('chat',msg);
+    
+
   });
 
   socket.on("escritura", (msg)=> {
@@ -127,6 +130,7 @@ io.on('connection', function(socket){
   //-- Usuario desconectado. Imprimir el identificador de su socket
   socket.on('disconnect', function(){
     users = users - 1;
+    win.webContents.send('print', users);
     console.log('Este Usuario se ha desconectado --> Socket id: ' + socket.id);
     socket.broadcast.emit('dis', 'Un usuario ha abandonado la conversación');
   });

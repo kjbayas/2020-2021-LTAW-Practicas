@@ -1,20 +1,79 @@
+body{
+  font-style: italic;
+}
 h1 {
-    width: 93%;
-    padding: 20px;
-    background-color: lightgreen;
-    border-radius: 10px;
-    text-align: center;
-  }
+  width: 93%;
+  padding: 20px;
+  background-color: lightgreen;
+  border-radius: 10px;
+  text-align: center;
+}
+
+h2{
+  text-align: center; 
+}
+h3{
+  color: rgb(41, 70, 122);
+  padding: 20px;
+}
+li{
+  list-style: none;
+  padding-right: 20px;
+  font-style: italic;
+}
 
 .blue {
-    color: blue;
+  color: blue;
 }
 
 .red {
   color: red;
 }
 
-  #display {
-      border: 2px solid lightblue;
-      padding: 10px;
-  }
+#display {
+  border: 2px solid lightblue;
+  padding: 10px;
+}
+
+.contenido{
+  float:left;
+  width: 40%;
+  padding: 15px;
+  background-color: lightblue;
+  border: 10px solid lightgreen;
+  height: 600px;
+  overflow: auto;
+  margin-bottom: 15px;
+  border-radius: 30px;
+
+}
+.chat{
+  float:right;
+  width: 45%;        
+  padding: 15px;
+  background-color: lightblue;
+  border: 10px solid lightgreen;
+  height: 600px;
+  overflow: auto;
+  margin-bottom: 15px;
+  border-radius: 30px;
+}
+
+input{
+  border-radius: 10px;
+  font-size: 20px;
+  width: 100px;
+  height: 40px;
+  border: 2px solid rgba(52, 211, 216, 0.89);
+  background-color: lightgreen;
+}
+
+input:hover{
+  box-shadow: 0 8px 16px 0 rgba(58, 206, 157, 0.863);
+}
+img{
+  width: 400px;
+  height: 400px;
+  border: 10px solid rgba(65, 107, 109, 0.89);
+  align-items: center;
+}
