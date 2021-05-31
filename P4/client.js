@@ -1,10 +1,8 @@
 // DOM
-
 let display = document.getElementById("display");
 let message = document.getElementById("message");
 let username = document.getElementById("username");
 let actions = document.getElementById('actions');
-
 
 //-- Crear un websocket, estableciendo conexión con el servidor
 const socket = io();
@@ -12,15 +10,24 @@ const socket = io();
 message.addEventListener('keypress', function(){
   socket.emit("typing", username.value);
 });
+
 socket.on("message", (msg)=>{
+
   display.innerHTML += '<p style="color:black">' + msg.username + ": " + msg.message + '</p>';
   actions.innerHTML = "";
 });
-
+socket.on('hello', function(msg){
+  display.innerHTML=`<p><em>${msg} Hello </em></p>`
+});
+socket.on('bienvenida', function(msg){
+  actions.innerHTML=`<p><em>${msg} </em></p>`
+});
 socket.on('typing', function(msg){
   actions.innerHTML=`<p><em>${msg} esta escribiendo....</em></p>`
 });
-
+socket.on('dis', function(msg){
+  actions.innerHTML=`<p><em>${msg} se ha ido un usuario</em></p>`
+});
 socket.on("commands", (msg)=>{
   if (msg.username == username.value) {
     msg.username = "servidor";

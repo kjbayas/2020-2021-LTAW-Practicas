@@ -12,7 +12,7 @@ const info2 = document.getElementById("info2");
 const info3 = document.getElementById("info3");
 const info4 = document.getElementById("info4");
 const info5 = document.getElementById("info5");
-const numusers = document.getElementById("numuser");
+const numuser = document.getElementById("numuser");
 const IP = document.getElementById("ip");
 
 //-- Acceder a la API de node para obtener la info
@@ -27,7 +27,7 @@ IP.textContent = ip.address();
 IP.textContent += ":" + PORT;
 
 btn_test.onclick = () => {
-    display.innerHTML += "<p>" + "Karol: Hola!" + "</p>";
+    display.innerHTML += "<p>" + "Karol Admi: Hola!" + "</p>";
     //-- Enviar mensaje al proceso principal
     electron.ipcRenderer.invoke('test', "MENSAJE DE PRUEBA");
 }

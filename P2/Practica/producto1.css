@@ -1,0 +1,19 @@
+body{
+    margin: 10px;
+    background-color: palevioletred;
+}
+
+.top{
+    background-color: rgba(214, 197, 161, 0.384);
+    border: 1px solid rgba(201, 79, 79, 0.425);
+    margin: 15px;
+    position: relative;
+    color: rgb(51, 49, 40);
+}
+
+ button{
+    font-size: 20px;
+    text-align: center;
+    border-radius: 8px;
+    padding: 10px 24px;
+}

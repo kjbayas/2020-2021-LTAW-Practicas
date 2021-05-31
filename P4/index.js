@@ -9,6 +9,7 @@ const ip = require('ip');
 const PORT = 8080
 
 var users = 0;
+let win = null;
 
 // servidor
 http.listen(PORT, function(){
@@ -25,13 +26,61 @@ app.get('/', (req, res) => {
 //-- El resto de peticiones se interpretan como ficheros estáticos
 app.use('/', express.static(__dirname +'/'));
 
+
+console.log("Arrancando electron...");
+electron.app.on('ready', () => {
+  console.log("Evento Ready!");
+
+  //-- Crear la ventana principal de nuestra aplicación
+  win = new electron.BrowserWindow({
+      width: 600,   //-- Anchura 
+      height: 600,  //-- Altura
+
+      //-- Permitir que la ventana tenga ACCESO AL SISTEMA
+      webPreferences: {
+        nodeIntegration: true,
+        contextIsolation: false
+      }
+  });
+
+//-- En la parte superior se nos ha creado el menu
+//-- por defecto
+//-- Si lo queremos quitar, hay que añadir esta línea
+//win.setMenuBarVisibility(false)
+
+//-- Cargar contenido web en la ventana
+//-- La ventana es en realidad.... ¡un navegador!
+//win.loadURL('https://www.urjc.es/etsit');
+
+//-- Cargar interfaz gráfica en HTML
+win.loadFile("index.html");
+
+win.on('ready-to-show', () => {
+  win.webContents.send('print', users);
+});
+
+win.webContents.send('print', users);
+
+});
+
+
+//-- Esperar a recibir los mensajes de botón apretado (Test) del proceso de 
+//-- renderizado. Al recibirlos se escribe una cadena en la consola
+electron.ipcMain.handle('test', (event, msg) => {
+
+var msg = {};
+msg.username = "Karol-ADMI";
+msg.message = "Este es un mensaje de prueba desde el admi Karol!";
+io.sockets.emit("message", msg);
+console.log("-> Mensaje: " + msg.message);
+});
+
 // WEBSOCKETS
 io.on('connection', function(socket){
   console.log('--> Usuario conectado . Socket id: ' + socket.id);
   users = users + 1;
-
-  //socket.emit('hello', "Bienvenido al Chat, eres el usuario " + users);
-  //socket.broadcast.emit('commands', 'Nuevo usuario se ha unido a la conversación');
+  socket.emit('hello', "Bienvenido al Chat, eres el usuario " + users);
+  socket.broadcast.emit('bienvenida', 'Nuevo usuario se ha unido a la conversación');
   socket.on('typing',(msg)=>{
     socket.broadcast.emit('typing',msg);
   });
@@ -66,6 +115,7 @@ io.on('connection', function(socket){
     }else{
         io.sockets.emit("message", msg);
     }
+    win.webContents.send('chat',msg);
   });
 
   socket.on("escritura", (msg)=> {
@@ -76,63 +126,6 @@ io.on('connection', function(socket){
   socket.on('disconnect', function(){
     users = users - 1;
     console.log('Este Usuario se ha desconectado --> Socket id: ' + socket.id);
-    socket.broadcast.emit('commands', 'Un usuario ha abandonado la conversación');
+    socket.broadcast.emit('dis', 'Un usuario ha abandonado la conversación');
   });
-});
-
-
-
-console.log("Arrancando electron...");
-
-//-- Variable para acceder a la ventana principal
-//-- Se pone aquí para que sea global al módulo principal
-let win = null;
-
-//-- Punto de entrada. En cuanto electron está listo,
-//-- ejecuta esta función
-electron.app.on('ready', () => {
-    console.log("Evento Ready!");
-
-    //-- Crear la ventana principal de nuestra aplicación
-    win = new electron.BrowserWindow({
-        width: 600,   //-- Anchura 
-        height: 600,  //-- Altura
-
-        //-- Permitir que la ventana tenga ACCESO AL SISTEMA
-        webPreferences: {
-          nodeIntegration: true,
-          contextIsolation: false
-        }
-    });
-
-  //-- En la parte superior se nos ha creado el menu
-  //-- por defecto
-  //-- Si lo queremos quitar, hay que añadir esta línea
-  //win.setMenuBarVisibility(false)
-
-  //-- Cargar contenido web en la ventana
-  //-- La ventana es en realidad.... ¡un navegador!
-  //win.loadURL('https://www.urjc.es/etsit');
-
-  //-- Cargar interfaz gráfica en HTML
-  win.loadFile("index.html");
-
-  win.on('ready-to-show', () => {
-    win.webContents.send('print', users);
-  });
-
-  win.webContents.send('print', users);
-
-});
-
-
-//-- Esperar a recibir los mensajes de botón apretado (Test) del proceso de 
-//-- renderizado. Al recibirlos se escribe una cadena en la consola
-electron.ipcMain.handle('test', (event, msg) => {
-  
-  var msg = {};
-  msg.username = "Karol-ADMI";
-  msg.message = "Este es un mensaje de prueba desde el admi Karol!";
-  io.sockets.emit("message", msg);
-  console.log("-> Mensaje: " + msg.message);
 });
