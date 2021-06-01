@@ -2,7 +2,7 @@
 const http = require('http');
 const fs = require('fs');
 
-const PUERTO = 8080;
+const PUERTO = 9090;
 
 //-- Definir los tipos de mime
 const mimeType = {
@@ -12,7 +12,7 @@ const mimeType = {
     "jpg"  : "image/jpg",
     "JPG"  : "image/jpg",
     "jpeg" : "image/jpeg",
-    "png"  : "image/png",
+    "PNG"  : "image/PNG",
     "gif"  : "image/gif",
     "ico"  : "image/x-icon",
     "json" : "application/json",
@@ -163,7 +163,7 @@ function carro_obtenido(req){
 //-- Pagina de producto
 var n;
 function get_prod(n, content){
-  ccontent = content.replace('NOMBRE',prod_disp[n][0]);
+  content = content.replace('NOMBRE',prod_disp[n][0]);
   content = content.replace('DESCRIPCION',prod_disp[n][1]);
   content = content.replace('PRECIO',prod_disp[n][3]);
   return content;

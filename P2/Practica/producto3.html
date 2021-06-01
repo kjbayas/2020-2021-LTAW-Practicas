@@ -3,21 +3,29 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>pantaloncorto</title>
+        <link rel="stylesheet" href="producto3.css">
+        <title>Conjunto Deportivo</title>
     </head>
     <body>
-        <h2>NOMBRE:</h2>
-        <div id='descripcion'>
-            <br>
-            DESCRIPCION:
+        <div class="con">
+            <img src="./img/conjunto.PNG" >
         </div>
-        <br>
-        <div id='precio'>
-            <h3>Precio: </h3>
+        <div  class="page-content">
+            <div id='nombre'>
+                <h1>NOMBRE</h1>
+            </div>
+            <div id='descripcion'>
+                <h3>DESCRIPCION</h3>
+            </div>
+            <div id='precio'>
+                <h2>PRECIO €</h2>
+            </div>
+            <form action="/add_conjunto" method="get">
+                <input type="submit" value="Añadir al carro"/>
+            </form>
         </div>
-        <form action="/add_conjunto" method="get">
-            <input type="submit" value="Añadir al carro"/>
-        </form>
-        <a href="/"><button>Accediendo a la pagina principal</button></a>
+        <div class="pag-prin">
+            <a href="/"><button>Accediendo a la pagina principal</button></a>
+        </div>
     </body>
 </html> 

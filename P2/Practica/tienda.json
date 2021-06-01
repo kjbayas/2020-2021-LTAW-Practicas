@@ -3,7 +3,7 @@
         "productos": [
             {
                 "nombre": "Top Deportivo",
-                "descripcion": "Top para mujer, ajustable.",
+                "descripcion": "Top Deportivo para mujer, es perfecto para realizar cualquier deporte.",
                 "stock": 20,
                 "precio": 15
             },

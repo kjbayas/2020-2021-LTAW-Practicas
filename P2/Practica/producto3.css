@@ -5,7 +5,7 @@ body{
     display: grid;
 }
 
-.top{
+.con{
     float: left;
     background: rgba(190, 136, 144, 0.281);
     width: 600px;
@@ -13,8 +13,9 @@ body{
     margin-right: 50px;
 }
 
-.top img{
-    padding: 60px;
+.con img{
+    padding: 40px 80px 90px 80px;
+    height: 500px;
 }
 .page-content{
     float: left;
