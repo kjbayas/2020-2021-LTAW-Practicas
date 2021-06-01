@@ -9,19 +9,19 @@
             },
             {
                 "nombre": "Pantalon Corto",
-                "descripcion": "Pantalones deportivos, para verano",
+                "descripcion": "Pantalones deportivos, para verano ",
                 "stock": 7,
                 "precio": 20
             },
             {
                 "nombre": "Conjunto",
-                "descripcion": " top y leggins deportivos.",
+                "descripcion": " top y leggins deportivos perfectos para realizar deporte.",
                 "stock": 5,
                 "precio": 40
             },
             {
                 "nombre": "Ligas de resistencia",
-                "descripcion": "Ligas para gluteos",
+                "descripcion": "Ligas de resistencia para gluteos y piernas ",
                 "stock": 20,
                 "precio": 40
             }

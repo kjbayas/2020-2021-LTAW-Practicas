@@ -2,7 +2,7 @@
 const http = require('http');
 const fs = require('fs');
 
-const PUERTO = 9090;
+const PUERTO = 8080;
 
 //-- Definir los tipos de mime
 const mimeType = {
@@ -12,7 +12,7 @@ const mimeType = {
     "jpg"  : "image/jpg",
     "JPG"  : "image/jpg",
     "jpeg" : "image/jpeg",
-    "PNG"  : "image/PNG",
+    "png"  : "image/png",
     "gif"  : "image/gif",
     "ico"  : "image/x-icon",
     "json" : "application/json",
@@ -48,7 +48,6 @@ const FICHERO_JSON_PRUEBA = "tienda_prueba.json";
 const  tiendajson = fs.readFileSync(FICHEROJSON);
 //-- Crear la estructura tienda a partir del contenido del fichero
 const tienda = JSON.parse(tiendajson);
-
 //-- Crear una lista de usuarios registrados.
 let users_reg = [];
 console.log("Registered Users");
